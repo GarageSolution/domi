@@ -6,6 +6,8 @@ import { WorklistComponent } from './components/worklist/worklist.component';
 import {  TableExpandableRowsExampleComponent } from './components/table-expandable-rows-example/table-expandable-rows-example.component';
 import {AddCardsComponent } from './components/add-cards/add-cards.component'
 import {CardDetailsComponent } from './components/card-details/card-details.component'
+import {SupervisorComponent} from './components/supervisor/supervisor.component'
+import {QualityCheckComponent} from './components/quality-check/quality-check.component'
 
 
 const routes: Routes = [
@@ -15,7 +17,9 @@ const routes: Routes = [
   { path: 'worklist', component: WorklistComponent },
   { path: 'Expandable', component: TableExpandableRowsExampleComponent },
   { path: 'AddCards', component: AddCardsComponent },
-  { path: 'Carddetails', component: CardDetailsComponent }
+  { path: 'Carddetails', component: CardDetailsComponent },
+  { path: 'Supervisor', component: SupervisorComponent },
+  { path: 'QualityCheck', component: QualityCheckComponent }
 ];
 
 @NgModule({

@@ -13,6 +13,13 @@ import { AddCardsComponent } from './components/add-cards/add-cards.component';
 import { CardDetailsComponent } from './components/card-details/card-details.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { SupervisorComponent } from './components/supervisor/supervisor.component';
+import { QualityCheckComponent } from './components/quality-check/quality-check.component';
 
 
 @NgModule({
@@ -23,7 +30,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     WorklistComponent,
     TableExpandableRowsExampleComponent,
     AddCardsComponent,
-    CardDetailsComponent
+    CardDetailsComponent,
+    SupervisorComponent,
+    QualityCheckComponent
    
   ],
   imports: [
@@ -32,7 +41,12 @@ import { MatNativeDateModule } from '@angular/material/core';
     BrowserAnimationsModule,
     AngularMaterialModule,
     FormsModule, ReactiveFormsModule, MatDatepickerModule,
-    MatNativeDateModule 
+    MatNativeDateModule ,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],

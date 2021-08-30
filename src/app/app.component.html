@@ -15,7 +15,7 @@
 <mat-sidenav-container  class="example-sidenav-container" autosize>
   <mat-sidenav #sidenav class="example-sidenav" mode="side">
     <mat-nav-list class="dashboard">
-      <a mat-list-item (click)="toggleActive('dashboard')">
+      <!-- <a mat-list-item (click)="toggleActive('dashboard')">
         <mat-icon mat-list-icon >account_circle</mat-icon>
         <p matLine>Dominion Board</p>
       </a>
@@ -23,17 +23,25 @@
       <a mat-list-item (click)="toggleActive('worklist')">
           <mat-icon mat-list-icon>inbox</mat-icon>
           <p matLine>Editor Bucket</p>
-      </a>
+      </a> -->
       <a mat-list-item  (click)="toggleActive('AddCards')">
-          <mat-icon mat-list-icon>drafts</mat-icon>
-          <p matLine>Card Entry</p>
+          <mat-icon mat-list-icon>A</mat-icon>
+          <p matLine>Add Card</p>
       </a>
       <a mat-list-item (click)="toggleActive('Carddetails')">
-          <mat-icon mat-list-icon>drafts</mat-icon>
+          <mat-icon mat-list-icon>C</mat-icon>
           <p matLine>Card Details</p>
       </a>
+      <a mat-list-item (click)="toggleActive('Supervisor')">
+        <mat-icon mat-list-icon>S</mat-icon>
+        <p matLine>Supervisor</p>
+    </a>
+    <a mat-list-item (click)="toggleActive('QualityCheck')">
+      <mat-icon mat-list-icon>Q</mat-icon>
+      <p matLine>Quality Check</p>
+  </a>
        <mat-divider></mat-divider>
-       <a mat-list-item (click)="toggleActive('Carddetaisl')">
+       <a mat-list-item (click)="toggleActive('Expandable')">
           <mat-icon mat-list-icon>mail</mat-icon>
           <p matLine>Expanded List</p>
       </a>

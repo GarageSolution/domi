@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material/table';
 
+
+
 export interface PeriodicElement { 
   DateEntered: string;  
   SlNo:number;
@@ -50,7 +52,7 @@ export class CardDetailsComponent implements OnInit {
   }
 
 
-  displayedColumns: string[] = ['select', 'DateEntered', 'SlNo', 'PremiseNo', 'Address','Status','SessionName'];
+  displayedColumns: string[] = ['select', 'DateEntered', 'SlNo', 'PremiseNo', 'Address','Status','SessionName','action'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
 

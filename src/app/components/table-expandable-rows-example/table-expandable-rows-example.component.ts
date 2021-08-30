@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
+
 export interface PeriodicElement {
   name: string;
   position: number;
