@@ -1,0 +1,18 @@
+/* Navbar - start */
+.navbar {
+    justify-content: space-between;
+}
+.company-logo {
+    text-decoration: none;
+    color: #fff;
+}
+/* Navbar - end */
+
+/* Side Navigation */
+mat-sidenav-container {
+    height: 91vh;
+}
+mat-sidenav, mat-sidenav-content {
+    padding: 16px;
+}
+/* Side Navigation */

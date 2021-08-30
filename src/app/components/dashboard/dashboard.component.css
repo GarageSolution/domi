@@ -1,0 +1,42 @@
+.dashboard-card {
+    width: 93.5vw;
+    margin: 1vw 1vw 1vw 1vw;
+    padding: 1rem;
+    height: 80vh;
+}
+.dashboard-control-container {
+    padding: 20px 0 20px 0;
+}
+
+.small-box, .large-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
+  }
+  
+  .small-box {
+    height: 100px;
+    width: 100px;
+  }
+  
+  .large-box {
+    height: 300px;
+    width: 300px;
+  }
+
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 8px;
+  }

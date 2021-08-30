@@ -1,0 +1,27 @@
+.dashboard-card {
+    width: 93.5vw;
+    margin: 1vw 1vw 1vw 1vw;
+    padding: 1rem;
+}
+.dashboard-control-container {
+    padding: 20px 0 20px 0;
+}
+table {
+    width: 100%;
+}
+.card-container {
+    /*  not needed styles to reflect it */ 
+    background: blue;
+    padding: 10px;
+    color: white;
+    width: 500px;
+  
+    /* needed styles below */
+    display: grid;
+    justify-content: space-between;
+  }
+
+  .title-center {
+    margin: 200 auto;
+    color: brown;
+  }

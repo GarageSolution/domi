@@ -1,0 +1,53 @@
+<!-- Toolbar -->
+<mat-toolbar color="primary" class="navbar">
+  <div>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <a href="" target="_blank" class="company-logo">Dominion</a>
+  </div>
+  <span class="nav-tool-items">
+    <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
+    <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
+  </span>
+</mat-toolbar>
+
+<mat-sidenav-container  class="example-sidenav-container" autosize>
+  <mat-sidenav #sidenav class="example-sidenav" mode="side">
+    <mat-nav-list class="dashboard">
+      <a mat-list-item (click)="toggleActive('dashboard')">
+        <mat-icon mat-list-icon >account_circle</mat-icon>
+        <p matLine>Dominion Board</p>
+      </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="toggleActive('worklist')">
+          <mat-icon mat-list-icon>inbox</mat-icon>
+          <p matLine>Editor Bucket</p>
+      </a>
+      <a mat-list-item  (click)="toggleActive('AddCards')">
+          <mat-icon mat-list-icon>drafts</mat-icon>
+          <p matLine>Card Entry</p>
+      </a>
+      <a mat-list-item (click)="toggleActive('Carddetails')">
+          <mat-icon mat-list-icon>drafts</mat-icon>
+          <p matLine>Card Details</p>
+      </a>
+       <mat-divider></mat-divider>
+       <a mat-list-item (click)="toggleActive('Carddetaisl')">
+          <mat-icon mat-list-icon>mail</mat-icon>
+          <p matLine>Expanded List</p>
+      </a>
+     <!-- <a mat-list-item >
+          <mat-icon mat-list-icon>delete</mat-icon>
+          <p matLine>Trash</p>
+      </a>
+      <a mat-list-item >
+          <mat-icon mat-list-icon>warning</mat-icon>
+          <p matLine>Spam</p>
+      </a> -->
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
