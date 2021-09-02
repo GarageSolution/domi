@@ -8,6 +8,8 @@ import {AddCardsComponent } from './components/add-cards/add-cards.component'
 import {CardDetailsComponent } from './components/card-details/card-details.component'
 import {SupervisorComponent} from './components/supervisor/supervisor.component'
 import {QualityCheckComponent} from './components/quality-check/quality-check.component'
+import { AuthGuard } from '../app/helpers';
+import { Role } from '../app/models';
 
 
 const routes: Routes = [
@@ -19,7 +21,7 @@ const routes: Routes = [
   { path: 'AddCards', component: AddCardsComponent },
   { path: 'Carddetails', component: CardDetailsComponent },
   { path: 'Supervisor', component: SupervisorComponent },
-  { path: 'QualityCheck', component: QualityCheckComponent }
+  { path: 'QualityCheck', component: QualityCheckComponent}
 ];
 
 @NgModule({

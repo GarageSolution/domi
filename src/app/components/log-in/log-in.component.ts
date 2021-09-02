@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from '../../services'
+import { first } from 'rxjs/operators';
+import { Console } from 'console';
 
 @Component({
   selector: 'app-log-in',
@@ -12,14 +15,29 @@ export class LogInComponent implements OnInit {
   hide = true;
   loginForm: FormGroup;
 
-  constructor(private router: Router, fb: FormBuilder) { 
+  loading = false;
+  submitted = false;
+  returnUrl: string;
+  error = '';
+
+  constructor(private router: Router, fb: FormBuilder,
+    private route: ActivatedRoute,
+    private authenticationService: AuthenticationService
+
+  ) {
     this.loginForm = fb.group({
       email: ["", Validators.required],
       password: ["", Validators.required]
     });
+
+    if (this.authenticationService.currentUserValue) { 
+      this.router.navigate(['/']);
+  }
+
   }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   getErrorMessage() {
@@ -29,10 +47,29 @@ export class LogInComponent implements OnInit {
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
-
+  get fcontrol() { return this.loginForm.controls; }
   submit() {
-    console.log(this.loginForm.value);
-    this.router.navigateByUrl('dashboard');
+    // console.log(this.loginForm.value);
+    // this.router.navigateByUrl('dashboard');
+    this.submitted = true;
+    console.log('Log in ');
+    console.log('form value   '+ this.fcontrol.email.value);
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+        return;
+    }
+
+    this.loading = true;
+    this.authenticationService.login(this.fcontrol.email.value, this.fcontrol.password.value)
+        .pipe(first())
+        .subscribe(
+            data => {
+                this.router.navigate([this.returnUrl]);
+            },
+            error => {
+                this.error = error;
+                this.loading = false;
+            });
   }
 
 }

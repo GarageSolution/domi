@@ -20,6 +20,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { SupervisorComponent } from './components/supervisor/supervisor.component';
 import { QualityCheckComponent } from './components/quality-check/quality-check.component';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor, ErrorInterceptor } from './helpers';
+
+
+import { fakeBackendProvider } from './helpers';
+
 
 
 @NgModule({
@@ -46,9 +52,12 @@ import { QualityCheckComponent } from './components/quality-check/quality-check.
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,HttpClientModule
   ],
-  providers: [MatDatepickerModule],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    MatDatepickerModule,fakeBackendProvider],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
