@@ -1,5 +1,3 @@
-
-
 <mat-toolbar color="primary">
   <span class="fill-remaining-space">Card Details</span>
 </mat-toolbar>
@@ -15,21 +13,32 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
+      <mat-form-field appearance="fill">
+        <mat-label>Choose Company</mat-label>
+        <mat-select formControlName="Company">
+          <mat-option *ngFor="let cpny of Company" [value]="cpny.value">
+            {{cpny.viewValue}}
+          </mat-option>
+        </mat-select>
+
+      </mat-form-field>
+
       <div class="form-element">
         <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Filter
           Data</button>
-      </div>    
+      </div>
 
     </form>
 
     <div class="form-element">
       <div style="padding-top: 20px;">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      
+
           <!-- Checkbox Column -->
           <ng-container matColumnDef="select">
             <th mat-header-cell *matHeaderCellDef>
-              <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+              <mat-checkbox (change)="$event ? masterToggle() : null"
+                [checked]="selection.hasValue() && isAllSelected()"
                 [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
               </mat-checkbox>
             </th>
@@ -43,45 +52,49 @@
             <th mat-header-cell *matHeaderCellDef fxFlex="100px"> DateEntered </th>
             <td mat-cell *matCellDef="let element" fxFlex="100px"> {{element.DateEntered}} </td>
           </ng-container>
-      
+
           <!-- Name Column -->
           <ng-container matColumnDef="SlNo">
             <th mat-header-cell *matHeaderCellDef> SlNo </th>
             <td mat-cell *matCellDef="let element"> {{element.SlNo}} </td>
           </ng-container>
-      
+
           <!-- Position Column -->
           <ng-container matColumnDef="PremiseNo">
             <th mat-header-cell *matHeaderCellDef> PremiseNo </th>
             <td mat-cell *matCellDef="let element"> {{element.PremiseNo}} </td>
           </ng-container>
-      
+
           <!-- Symbol Column -->
           <ng-container matColumnDef="Address">
             <th mat-header-cell *matHeaderCellDef> Address </th>
             <td mat-cell *matCellDef="let element"> {{element.Address}} </td>
           </ng-container>
-      
+
           <!-- Symbol Column -->
           <ng-container matColumnDef="Status">
             <th mat-header-cell *matHeaderCellDef> Status </th>
             <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
           </ng-container>
-      
+
           <!-- Symbol Column -->
           <ng-container matColumnDef="SessionName">
             <th mat-header-cell *matHeaderCellDef> SessionName </th>
             <td mat-cell *matCellDef="let element"> {{element.SessionName}} </td>
           </ng-container>
-      
+          <ng-container matColumnDef="Company">
+            <th mat-header-cell *matHeaderCellDef> Company </th>
+            <td mat-cell *matCellDef="let element"> {{element.Company}} </td>
+          </ng-container>
+
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef> Action </th>
-            <td mat-cell *matCellDef="let element" class="action-link"> 
-              <a>Edit</a> | 
-              <a>Delete</a>  
+            <td mat-cell *matCellDef="let element" class="action-link">
+              <a routerLink="/AddCards">Edit</a> |
+              <a link>Delete</a>
             </td>
           </ng-container>
-      
+
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
 
@@ -91,16 +104,12 @@
         </table>
       </div>
     </div>
- 
+
 
   </mat-card-content>
 
 
 </div>
-
-
-
-
 
 <ng-template #forminfo>
   <div class="container">

@@ -12,15 +12,20 @@ export interface PeriodicElement {
   Address: string;
   Status: string ;
   SessionName: string ;
+  Company:string;
+}
+interface ICompany {
+  value: string;
+  viewValue: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {DateEntered: '2/2/2021',SlNo:1,PremiseNo:12145356464, Address: 'Sample 1',Status:'Install', SessionName:'ST_5 8 2021_5188200077'},
-  {DateEntered: '2/2/2021', SlNo:1,PremiseNo:12145356464, Address: 'Sample 1',Status:'Install', SessionName:'ST_5 8 2021_5188200077'},
-  {DateEntered: '2/2/2021', SlNo:1,PremiseNo:12145356464, Address: 'Sample 1',Status:'Install', SessionName:'ST_5 8 2021_5188200077'},
-  {DateEntered: '2/2/2021', SlNo:1,PremiseNo:12145356464, Address: 'sample 1',Status:'Install', SessionName:'ST_5 8 2021_5188200077'},
-  {DateEntered: '2/2/2021', SlNo:1,PremiseNo:12145356464, Address: 'sample 1',Status:'Install', SessionName:'ST_5 8 2021_5188200077'},
-  {DateEntered: '2/2/2021', SlNo:1,PremiseNo:12145356464, Address: 'sample 1',Status:'Install', SessionName:'ST_5 8 2021_5188200077'}
+  {DateEntered: '2/2/2021',SlNo:1,PremiseNo:12145356464, Address: 'Sample 1',Status:'Install', SessionName:'ST_5 8 2021_5188200077' , Company:'NC'},
+  {DateEntered: '2/2/2021', SlNo:1,PremiseNo:12145356464, Address: 'Sample 1',Status:'Install', SessionName:'ST_5 8 2021_5188200077', Company:'SC'},
+  {DateEntered: '2/2/2021', SlNo:1,PremiseNo:12145356464, Address: 'Sample 1',Status:'Install', SessionName:'ST_5 8 2021_5188200077', Company:'NC'},
+  {DateEntered: '2/2/2021', SlNo:1,PremiseNo:12145356464, Address: 'sample 1',Status:'Install', SessionName:'ST_5 8 2021_5188200077', Company:'NC'},
+  {DateEntered: '2/2/2021', SlNo:1,PremiseNo:12145356464, Address: 'sample 1',Status:'Install', SessionName:'ST_5 8 2021_5188200077', Company:'NC'},
+  {DateEntered: '2/2/2021', SlNo:1,PremiseNo:12145356464, Address: 'sample 1',Status:'Install', SessionName:'ST_5 8 2021_5188200077', Company:'SC'}
  
 ];
 
@@ -47,12 +52,13 @@ export class CardDetailsComponent implements OnInit {
     // let emailregex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     this.formGroup = this.formBuilder.group({
       'date': [null, Validators.required],      
-      'validate': ''
+      'validate': '',
+      'Company':[null, Validators.required],
     });
   }
 
 
-  displayedColumns: string[] = ['select', 'DateEntered', 'SlNo', 'PremiseNo', 'Address','Status','SessionName','action'];
+  displayedColumns: string[] = ['select', 'DateEntered', 'SlNo', 'PremiseNo', 'Address','Status','SessionName','action', 'Company'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
 
@@ -78,6 +84,11 @@ export class CardDetailsComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.SlNo + 1}`;
   }
 
+
+  Company: ICompany[] = [
+    { value: 'NC', viewValue: 'NorthCarolina' },
+    { value: 'SC', viewValue: 'SouthCarolina' },   
+  ];
 
 
 }

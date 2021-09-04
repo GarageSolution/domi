@@ -7,6 +7,10 @@ interface wtype {
   value: string;
   viewValue: string;
 }
+interface ICompany {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-add-cards',
@@ -40,9 +44,11 @@ export class AddCardsComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       'date': [null, Validators.required],
       'address': [null, Validators.required],
+      'remark':[null,Validators.required],
       'premise': [null, Validators.required],
       'wtype': [null, Validators.required],
-      'validate': ''
+      'validate': '',
+      'Company':[null, Validators.required],
     });
   }
 
@@ -60,6 +66,13 @@ export class AddCardsComponent implements OnInit {
 
   getErrorWtype() {
     return this.formGroup.get('wtype').hasError('required') ? 'Field is required' : '';
+  }
+
+  getRemark() {
+    return this.formGroup.get('remark').hasError('required') ? 'Field is required' : '';
+  }
+  getCompany() {
+    return this.formGroup.get('Company').hasError('required') ? 'Field is required' : '';
   }
 
   // setChangeValidate() {
@@ -121,6 +134,10 @@ export class AddCardsComponent implements OnInit {
   //   return this.formGroup.get('password').hasError('required') ? 'Field is required (at least eight characters, one uppercase letter and one number)' :
   //     this.formGroup.get('password').hasError('requirements') ? 'Password needs to be at least eight characters, one uppercase letter and one number' : '';
   // }
+  Company: ICompany[] = [
+    { value: 'NC', viewValue: 'NorthCarolina' },
+    { value: 'SC', viewValue: 'SouthCarolina' },   
+  ];
 
   onSubmit(post) {
     this.post = post;

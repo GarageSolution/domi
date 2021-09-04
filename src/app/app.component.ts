@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../../src/app/services';
+import { User, Role } from './models';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +9,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-app-v1-demo';
 
-  constructor(private router: Router) {
+  currentUser: User;
+  title = 'Dominion';
 
+  constructor(private router: Router, private authenticationService: AuthenticationService) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
-  
+
   toggleActive(link: any) {
     this.router.navigateByUrl(link);
+  }
+  get isAdmin() {
+    return this.currentUser && this.currentUser.role === Role.Admin;
+  }
+
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

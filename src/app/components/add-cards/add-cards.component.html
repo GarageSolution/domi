@@ -5,8 +5,7 @@
 <div class="container" *ngIf="!post; else forminfo" novalidate>
     <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
 
-
-        <mat-form-field class="form-element" >
+        <mat-form-field class="form-element">
             <mat-label>Choose a date</mat-label>
             <input matInput [matDatepicker]="picker" formControlName="date">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -16,35 +15,56 @@
             </mat-error>
         </mat-form-field>
 
+        <mat-form-field appearance="fill">
+            <mat-label>Choose Company</mat-label>
+            <mat-select formControlName="Company">
+                <mat-option *ngFor="let cpny of Company" [value]="cpny.value">
+                    {{cpny.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
 
         <mat-form-field appearance="fill">
             <mat-label>Choose Work Type</mat-label>
             <mat-select formControlName="wtype">
-              <mat-option *ngFor="let wtype of wtypes" [value]="wtype.value">
-                {{wtype.viewValue}}
-              </mat-option>
+                <mat-option *ngFor="let wtype of wtypes" [value]="wtype.value">
+                    {{wtype.viewValue}}
+                </mat-option>
             </mat-select>
             <mat-error *ngIf="!formGroup.controls['wtype'].valid && formGroup.controls['wtype'].touched">
                 {{ getErrorWtype() }}
             </mat-error>
-          </mat-form-field>
+        </mat-form-field>
 
-        <mat-form-field  appearance="outline" class="form-element" >
+        <mat-form-field appearance="outline" class="form-element">
             <mat-label>Fill Premise</mat-label>
             <input matInput placeholder="Type your Premise" formControlName="premise">
             <mat-error *ngIf="!formGroup.controls['premise'].valid && formGroup.controls['premise'].touched">
                 {{ getErrorPremise() }}
             </mat-error>
-        </mat-form-field>      
+        </mat-form-field>
 
         <mat-form-field class="form-element" appearance="outline">
             <mat-label>Fill Address</mat-label>
-            <input matInput placeholder="Type your Address" formControlName="address">
+           
+            <textarea matInput placeholder="Type your Address" formControlName="address"></textarea>
             <mat-error *ngIf="!formGroup.controls['address'].valid && formGroup.controls['address'].touched">
-                {{  getErrorAddress() }}
+                {{ getErrorAddress() }}
             </mat-error>
         </mat-form-field>
-        
+
+        <mat-form-field class="form-element" appearance="outline">
+            <mat-label>Remarks</mat-label>
+
+            <textarea matInput placeholder="Enter Remarks for QA" formControlName="remark"></textarea>
+            <mat-error *ngIf="!formGroup.controls['remark'].valid && formGroup.controls['remark'].touched">
+                {{ getErrorAddress() }}
+            </mat-error>
+        </mat-form-field>
+
+
+
 
 
         <div class="form-element">

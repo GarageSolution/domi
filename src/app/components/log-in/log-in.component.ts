@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../services'
 import { first } from 'rxjs/operators';
-import { Console } from 'console';
+
 
 @Component({
   selector: 'app-log-in',
@@ -37,6 +37,7 @@ export class LogInComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
@@ -64,7 +65,10 @@ export class LogInComponent implements OnInit {
         .pipe(first())
         .subscribe(
             data => {
+
+              console.log('return url ',this.returnUrl)
                 this.router.navigate([this.returnUrl]);
+
             },
             error => {
                 this.error = error;
