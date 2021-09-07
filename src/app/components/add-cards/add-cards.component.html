@@ -56,16 +56,11 @@
 
         <mat-form-field class="form-element" appearance="outline">
             <mat-label>Remarks</mat-label>
-
             <textarea matInput placeholder="Enter Remarks for QA" formControlName="remark"></textarea>
             <mat-error *ngIf="!formGroup.controls['remark'].valid && formGroup.controls['remark'].touched">
                 {{ getErrorAddress() }}
             </mat-error>
         </mat-form-field>
-
-
-
-
 
         <div class="form-element">
             <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Submit
@@ -74,7 +69,6 @@
 
     </form>
 </div>
-
 <ng-template #forminfo>
     <div class="container">
         {{ post | json }}
